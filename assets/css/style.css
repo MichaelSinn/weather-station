@@ -1,0 +1,14 @@
+*{
+    box-sizing: border-box;
+}
+
+.container{
+    border: 1px dashed red;
+    height: 300px;
+}
+
+.forcast-card{
+    border: 1px dashed green;
+    margin: 5px;
+    height: 250px;
+}
