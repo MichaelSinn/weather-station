@@ -1,0 +1,44 @@
+{
+  "coord": {
+      "lon": -79.66,
+      "lat": 43.46
+  },
+  "weather": [
+      {
+          "id": 803,
+          "main": "Clouds",
+          "description": "broken clouds",
+          "icon": "04d"
+      }
+  ],
+  "base": "stations",
+  "main": {
+      "temp": 289.82,
+      "feels_like": 289.74,
+      "temp_min": 288.09,
+      "temp_max": 291.99,
+      "pressure": 987,
+      "humidity": 84
+  },
+  "visibility": 10000,
+  "wind": {
+      "speed": 4.71,
+      "deg": 292,
+      "gust": 7.95
+  },
+  "clouds": {
+      "all": 82
+  },
+  "dt": 1664142533,
+  "sys": {
+      "type": 2,
+      "id": 2010070,
+      "country": "CA",
+      "sunrise": 1664104151,
+      "sunset": 1664147484
+  },
+  "timezone": -14400,
+  "id": 6092122,
+  "name": "Oakville",
+  "cod": 200
+}
