@@ -1,15 +1,13 @@
-// GIVEN a weather dashboard with form inputs
-// WHEN I search for a city
-// THEN I am presented with current and future conditions for that city and that city is added to the search history
-// WHEN I view current weather conditions for that city
-// THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the wind speed
-// WHEN I view future weather conditions for that city
-// THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-// WHEN I click on a city in the search history
-// THEN I am again presented with current and future conditions for that city
+/* 
+  TODO:
+    - Search history
+    - High/low temps for forecast
+    - Style page
+*/
 
 const apiKey = "4525e4c4d6900be2e3932d311208c64e";
-// const apiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city},${stateCode},${countryCode}&limit=${limit}&appid=${apiKey}`;
+
+let searchHistory;
 
 function getWeather(lat, lon, type) {
   const apiKey = "4525e4c4d6900be2e3932d311208c64e";
@@ -19,7 +17,6 @@ function getWeather(lat, lon, type) {
       return response.json();
     })
     .then(function (data) {
-      let cityName;
       let temperatureRange;
       let humidity;
       let windSpeed;
@@ -57,24 +54,19 @@ function getWeather(lat, lon, type) {
             // Process each day's weather and add it to the respective card
 
             // TODO: Iterate over each of the hour segments for each day in order to find the averages and high/low temps etc
-            cityName = data.city.name;
-            weatherDate = new Date(e[0].dt * 1000).toJSON().split("T")[0];
-            weatherIcon = e[0].weather[0].main;
+            weatherDate = new Date(e[4].dt * 1000).toJSON().split("T")[0];
+            weatherIcon = e[4].weather[0].icon;
 
-            weather = e[0].weather[0].description; // Mode
-            windSpeed = e[0].wind.speed; // Mean
-            humidity = e[0].main.humidity; // Mode
-            temperatureRange = [
-              // Max and min
-              Math.round(e[0].main.temp_min),
-              Math.round(e[0].main.temp_max),
-            ];
+            weather = e[4].weather[0].description; // Mode
+            windSpeed = e[4].wind.speed; // Mean
+            humidity = e[4].main.humidity; // Mode
+            temperatureRange = `Low ${Math.round(e[4].main.temp_min)}°C / High ${Math.round(e[4].main.temp_max)}°C`
 
             let weatherCard = $("<article>");
             let dateEl = $("<h3>");
             let weatherListEl = $("<ul>");
             let weatherEl = $("<li>");
-            let iconEl = $("<i>");
+            let iconEl = $("<img>");
             let windSpeedEl = $("<li>");
             let humidityEl = $("<li>");
             let temperatureRangeEl = $("<li>");
@@ -85,7 +77,7 @@ function getWeather(lat, lon, type) {
             windSpeedEl.text(windSpeed + "km/h");
             humidityEl.text(humidity + "%");
             temperatureRangeEl.text(temperatureRange);
-            iconEl.text(weatherIcon);
+            iconEl.attr("src", `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`);
 
             weatherListEl.append(weatherEl);
             weatherListEl.append(windSpeedEl);
@@ -104,17 +96,48 @@ function getWeather(lat, lon, type) {
 
         case "weather": // Current weather
           let currentTemp = Math.round(data.main.temp);
-          cityName = data.name;
-          weatherDate = data.dt;
+          let cityName = data.name;
+          weatherDate = new Date(data.dt * 1000).toJSON().split("T")[0];
           weather = data.weather[0].description;
-          weatherIcon = data.weather[0].main;
+          weatherIcon = data.weather[0].icon;
           windSpeed = data.wind.speed;
           humidity = data.main.humidity;
-          temperatureRange = [
-            Math.round(data.main.temp_min),
-            Math.round(data.main.temp_max),
-          ];
+          temperatureRange = `Low ${Math.round(data.main.temp_min)}°C / High ${Math.round(data.main.temp_max)}°C`
+          
+          let weatherCard = $("<article>");
+          let cityNameEl = $("<h2>");
+          let dateEl = $("<h3>");
+          let weatherListEl = $("<ul>");
+          let weatherEl = $("<li>");
+          let iconEl = $("<img>");
+          let windSpeedEl = $("<li>");
+          let humidityEl = $("<li>");
+          let temperatureRangeEl = $("<li>");
+          let todaysForecastEl = $("#todays-forecast");
+          let currentTempEl = $("<li>");
 
+          cityNameEl.text(cityName);
+          currentTempEl.text(currentTemp + "°C");
+          dateEl.text(weatherDate);
+          weatherEl.text(weather);
+          windSpeedEl.text(windSpeed + "km/h");
+          humidityEl.text(humidity + "%");
+          temperatureRangeEl.text(temperatureRange);
+          iconEl.attr("src", `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`);
+
+          weatherListEl.append(weatherEl);
+          weatherListEl.append(currentTempEl);
+          weatherListEl.append(windSpeedEl);
+          weatherListEl.append(humidityEl);
+          weatherListEl.append(temperatureRangeEl);
+          
+          weatherCard.addClass("col-12 col-md-10 col-lg-10 weather-card");
+          weatherCard.append(cityNameEl);
+          weatherCard.append(dateEl);
+          weatherCard.append(iconEl);
+          weatherCard.append(weatherListEl);
+          
+          todaysForecastEl.append(weatherCard);
           break;
       }
     });
@@ -170,5 +193,5 @@ function getAverage(dataList, type) {
   return null;
 }
 
-// getCoords("oakville", "on", "ca");
-getWeather("43.46", "-79.66", "forecast"); // Current Weather
+getCoords("oakville", "on", "ca");
+// getWeather("43.46", "-79.66", "forecast"); // Current Weather
