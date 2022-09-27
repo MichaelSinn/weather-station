@@ -1,9 +1,3 @@
-/*
-  TODO:
-    - Style page
-    - Handling multiple cities being returned
-    - Remove getAverage function
-*/
 const apiKey = "4525e4c4d6900be2e3932d311208c64e";
 const searchButton = $("#search-button");
 const searchHistoryListEl = $("#search-history");
@@ -74,7 +68,7 @@ function getWeather(lat, lon, type) {
                     let dateEl = $("<h4>");
                     let weatherListEl = $("<ul>");
                     let weatherEl = $("<li>");
-                    let iconEl = $("<img alt='Weather icon'>");
+                    let iconEl = $("<img alt='Weather icon' src=''>");
                     let windSpeedEl = $("<li>");
                     let humidityEl = $("<li>");
                     let temperatureRangeEl = $("<li>");
@@ -121,7 +115,7 @@ function getWeather(lat, lon, type) {
                 let dateEl = $("<h4>");
                 let weatherListEl = $("<ul>");
                 let weatherEl = $("<li>");
-                let iconEl = $("<img alt='Weather icon'>");
+                let iconEl = $("<img alt='Weather icon' src=''>");
                 let windSpeedEl = $("<li>");
                 let humidityEl = $("<li>");
                 let temperatureRangeEl = $("<li>");
@@ -177,37 +171,6 @@ function getCoords(cityName, provinceCode = "", countryCode = "") {
         });
 }
 
-function getAverage(dataList, type) {
-    switch (type) {
-        case "mode":
-            let count = {};
-            dataList.forEach((e) => {
-                if (!(e in count)) {
-                    count[e] = 0;
-                }
-                count++;
-            });
-
-            let mostCommon = 0;
-            let mostCommonElement;
-            Object.entries(count).forEach(([key, value]) => {
-                if (v > mostCommon) {
-                    mostCommonElement = key;
-                    mostCommon = value;
-                }
-            });
-
-            return mostCommonElement;
-        case "mean":
-            let total = 0;
-            dataList.forEach((e) => {
-                total += e;
-            });
-            return total / dataList.length;
-    }
-    return null;
-}
-
 function getMaxMinTemperature(weatherData) {
     let lowest;
     let highest;
@@ -253,9 +216,10 @@ function printSearchHistory() {
 
 searchButton.on("click", function (e) {
     e.preventDefault();
-    let content = $(this).parent().children().eq(0);
+    let content = $(this).parent().children().eq(1);
     let args = content.val().split(",");
     content.val("");
+    if (!args[0] || args[0].trim() === "") return;
     updateSearchHistory(args[0]);
     getCoords(args[0], args[1], args[2]);
 });

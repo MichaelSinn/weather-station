@@ -66,6 +66,7 @@ h4 {
     margin: 5px auto;
     border-radius: 5px;
     cursor: pointer;
+    background-color: #dadada;
 }
 
 .search-history--item:hover {
