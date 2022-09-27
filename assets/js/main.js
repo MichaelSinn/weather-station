@@ -80,7 +80,7 @@ function getWeather(lat, lon, type) {
                     temperatureRangeEl.text(temperatureRange);
                     iconEl.attr(
                         "src",
-                        `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`
+                        `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`
                     );
 
                     weatherListEl.append(weatherEl);
@@ -130,7 +130,7 @@ function getWeather(lat, lon, type) {
                 temperatureRangeEl.text(temperatureRange);
                 iconEl.attr(
                     "src",
-                    `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`
+                    `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`
                 );
 
                 weatherListEl.append(weatherEl);
@@ -151,7 +151,7 @@ function getWeather(lat, lon, type) {
 }
 
 function getCoords(cityName, provinceCode = "", countryCode = "") {
-    const apiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName.trim()},${provinceCode.trim()},${countryCode.trim()}&limit=5&appid=${apiKey}`;
+    const apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName.trim()},${provinceCode.trim()},${countryCode.trim()}&limit=5&appid=${apiKey}`;
     fetch(apiUrl)
         .then(function (response) {
             return response.json();
