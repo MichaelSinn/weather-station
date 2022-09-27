@@ -21,7 +21,11 @@ h4{
 .search-bar{
   padding: 20px;
   display: flex;
-  justify-content: center;
+  align-items: center;
+}
+
+.search-bar form{
+    margin-bottom: 20px;
 }
 
 .search-bar form input, .search-bar form button{
@@ -36,8 +40,24 @@ h4{
 
 .search-bar form button{
   padding: 10px 20px;
-  background-color: rgb(156, 74, 53);
+  background-color: rgb(224, 103, 76);
   color: white;
+}
+
+.search-bar form button:hover{
+    background-color: rgb(199, 81, 54);
+}
+
+.search-history--item{
+    border: 1px black solid;
+    padding: 5px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-history--item:hover{
+    background-color: #c5c5c5;
 }
 
 .forcast-card{
