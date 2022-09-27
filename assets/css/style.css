@@ -1,66 +1,78 @@
-:root{
-  --main-color: blanchedalmond;
+:root {
+    --main-color: blanchedalmond;
 }
 
-*{
+* {
     box-sizing: border-box;
 }
 
-html{
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-h1{
-  text-align: center;
+h1 {
+    text-align: center;
 }
 
-h4{
-  font-size: 1.25em;
+h4 {
+    font-size: 1.25em;
 }
 
-.search-bar{
-  padding: 20px;
-  display: flex;
-  align-items: center;
+.search-bar {
+    padding: 20px;
+    display: flex;
+    align-items: center;
 }
 
-.search-bar form{
+.search-bar form {
     margin-bottom: 20px;
+    width: 100%;
 }
 
-.search-bar form input, .search-bar form button{
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
+.search-bar form label{
+    font-size: 1.5em;
 }
 
-.search-bar form input{
-  background-color: var(--main-color);
+.search-bar form input, .search-bar form button {
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
-.search-bar form button{
-  padding: 10px 20px;
-  background-color: rgb(224, 103, 76);
-  color: white;
+.search-bar form input {
+    background-color: var(--main-color);
+
 }
 
-.search-bar form button:hover{
+.search-bar form button {
+    padding: 10px 20px;
+    background-color: rgb(224, 103, 76);
+    color: white;
+}
+
+.search-bar form button:hover {
     background-color: rgb(199, 81, 54);
 }
 
-.search-history--item{
+.search-history {
+    width: 100%;
+}
+
+.search-history--item {
     border: 1px black solid;
     padding: 5px 20px;
-    margin: 5px;
+    margin: 5px auto;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.search-history--item:hover{
+.search-history--item:hover {
     background-color: #c5c5c5;
 }
 
-.forcast-card{
+.forcast-card {
     background-color: rgb(209, 209, 209);
     border-radius: 10px;
     margin: 5px;
@@ -68,8 +80,8 @@ h4{
     padding: 5px;
 }
 
-.weather-card{
-  background-color: var(--main-color);
-  margin: 5px;
-  border-radius: 10px;
+.weather-card {
+    background-color: var(--main-color);
+    margin: 5px;
+    border-radius: 10px;
 }
