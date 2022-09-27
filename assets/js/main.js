@@ -76,8 +76,8 @@ function getWeather(lat, lon, type) {
                     // Add information to each of the elements
                     dateEl.text(weatherDate);
                     weatherEl.text(weather);
-                    windSpeedEl.text(windSpeed + "m/s");
-                    humidityEl.text(humidity + "%");
+                    windSpeedEl.text(windSpeed + " m/s wind");
+                    humidityEl.text(humidity + "% humidity");
                     temperatureRangeEl.text(temperatureRange);
                     iconEl.attr(
                         "src",
@@ -129,8 +129,8 @@ function getWeather(lat, lon, type) {
                 currentTempEl.text(currentTemp + "°C");
                 dateEl.text(weatherDate);
                 weatherEl.text(weather);
-                windSpeedEl.text(windSpeed + "m/s");
-                humidityEl.text(humidity + "%");
+                windSpeedEl.text(windSpeed + " m/s wind");
+                humidityEl.text(humidity + "% humidity");
                 temperatureRangeEl.text(temperatureRange);
                 iconEl.attr(
                     "src",
