@@ -15,23 +15,24 @@
         <h1>Weather Station</h1>
     </header>
     <main class="row">
-        <section class="col-12 col-md-4 col-lg-3 container"> <!-- Search section -->
-            <form>
+        <section class="col-12 col-md-4 col-lg-3 container search-bar"> <!-- Search section -->
+            <form id="search-bar-form">
                 <input type="text" id="search" placeholder="Search">
-                <button type="submit">Go</button>
+                <button type="submit" id="search-button">Go</button>
             </form>
         </section>
         <section class="col-12 col-md-8 col-lg-9 container"> <!-- Results section -->
-            <article id="todays-forecast">
-
+            <h2>Current Weather</h2>
+            <article class="row" id="todays-forecast">
+              
             </article>
+            <h2>5 Day Forecast</h2>
             <div class="row" id="five-day-forcast">
-
+            
             </div>
         </section>
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/luxon@3.0.4/build/global/luxon.min.js"></script> -->
     <script src="./assets/js/main.js"></script>
 </body>
 </html>

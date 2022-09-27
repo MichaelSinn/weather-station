@@ -1,17 +1,55 @@
+:root{
+  --main-color: blanchedalmond;
+}
+
 *{
     box-sizing: border-box;
 }
 
-h3{
+html{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1{
+  text-align: center;
+}
+
+h4{
   font-size: 1.25em;
 }
 
-.container{
-    border: 1px dashed red;
+.search-bar{
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar form input, .search-bar form button{
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.search-bar form input{
+  background-color: var(--main-color);
+}
+
+.search-bar form button{
+  padding: 10px 20px;
+  background-color: rgb(156, 74, 53);
+  color: white;
 }
 
 .forcast-card{
-    border: 1px dashed green;
+    background-color: rgb(209, 209, 209);
+    border-radius: 10px;
     margin: 5px;
     height: 250px;
+    padding: 5px;
+}
+
+.weather-card{
+  background-color: var(--main-color);
+  margin: 5px;
+  border-radius: 10px;
 }
